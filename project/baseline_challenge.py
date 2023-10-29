@@ -151,6 +151,7 @@ class BaselineChallenge(FlowSpec):
         import seaborn as sns
         import matplotlib.pyplot as plt
         from matplotlib import rcParams
+        import pandas as pd
 
         rcParams.update({"figure.autolayout": True})
 
@@ -171,9 +172,10 @@ class BaselineChallenge(FlowSpec):
 
         # TODO: Add a Table of the results to your card!
         current.card.append(
-            Table(
-                violin_plot_df,  # TODO: What goes here to populate the Table in the card?
-                headers=["Model name", "Params", "Task pathspec", "Accuracy", "ROCAUC"],
+            Table.from_dataframe(
+                pd.DataFrame(violin_plot_df,  # TODO: What goes here to populate the Table in the card?
+                # columns=["Model name", "Params", "Task pathspec", "Accuracy", "ROCAUC"],
+                )
             )
         )
 
